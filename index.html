@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>MoviLog</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>MoviLog</h1>
+        <p>Add, sort, and manage movies you want to watch</p>
+    </header>
+    <form action="" method="get" id="add-movie-form">
+        <label for="movie">Title:<br>
+            <input type="text" id="movie" name="movie" required placeholder="e.g. Inception">
+        </label>
+
+        <label for="genre">Genre:<br>
+            <select id="genre" name="genre" required>
+                <option value="" disabled selected>Select Genre</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+        </label>
+
+        <div>Your Rating:
+            <div class="ratings" id="rating">
+                <input type="radio" name="rate" id="rating-5" value="5">
+                <label for="rating-5" class="rating-star">&#9733;</label>
+                <input type="radio" name="rate" id="rating-4" value="4">
+                <label for="rating-4" class="rating-star">&#9733;</label>
+                <input type="radio" name="rate" id="rating-3" value="3">
+                <label for="rating-3" class="rating-star">&#9733;</label>
+                <input type="radio" name="rate" id="rating-2" value="2">
+                <label for="rating-2" class="rating-star">&#9733;</label>
+                <input type="radio" name="rate" id="rating-1" value="1">
+            </div>
+        </div>
+
+        <button type="submit" class="add-movie-button">Add Movie</button>
+    </form>
+
+    <h2>Your Wishlist</h2>
+    <div id="sort-filter-container">
+        <label for="sort-by">Sort by:
+            <select id="sort-by" name="sort-by">
+                <option value="title">Title</option>
+                <option value="genre">Genre</option>
+            </select>
+        </label>
+        <label for="filter-genre">Filter by Genre:
+            <select id="filter-genre" name="filter-genre">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+        </label>
+    </div>
+    <div class="wishlist-container">
+        <div class="movie-card">
+            <h3 class="movie-title">Inception</h3>
+            <p class="movie-rating">★★★★☆</p>
+            <p class="movie-genre">Sci-Fi</p>
+            <div class="card-button-container">
+                <button class="edit-button">✎</button>
+                <button class="mark-watched-button">✓</button>
+                <button class="delete-button">🗑️</button>
+            </div>
+        </div>
+        <dialog>
+            <h3>Edit Movie</h3>
+        <form method="dialog" id="edit-movie-form">
+            <label for="edit-movie">Title:<br>
+                <input type="text" id="edit-movie" name="edit-movie" required placeholder="e.g. Inception">
+            </label>
+
+            <label for="edit-genre">Genre:<br>
+                <select id="edit-genre" name="edit-genre" required>
+                    <option value="" disabled selected>Select Genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Thriller">Thriller</option>
+                </select>
+            </label>
+
+            <div>Your Rating:
+                <div class="ratings" id="edit-rating">
+                    <input type="radio" name="rate" id="rating-5" value="5">
+                    <label for="rating-5" class="rating-star">&#9733;</label>
+                    <input type="radio" name="rate" id="rating-4" value="4">
+                    <label for="rating-4" class="rating-star">&#9733;</label>
+                    <input type="radio" name="rate" id="rating-3" value="3">
+                    <label for="rating-3" class="rating-star">&#9733;</label>
+                    <input type="radio" name="rate" id="rating-2" value="2">
+                    <label for="rating-2" class="rating-star">&#9733;</label>
+                    <input type="radio" name="rate" id="rating-1" value="1">
+                </div>
+            </div>
+
+                <button type="submit" class="save-changes-button" autofocus>Save Changes</button>
+            <button class="cancel-edit-button">Cancel</button>
+            </form>
+        </dialog>
+    </div>
+</body>
+</html>
