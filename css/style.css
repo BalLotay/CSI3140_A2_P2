@@ -157,6 +157,10 @@ label {
 	gap: 10px;
 }
 
+.watched {
+	background-color: lightgreen;;
+}
+
 .movie-card button {
 	padding: 0px;;
 	width: 30px;
