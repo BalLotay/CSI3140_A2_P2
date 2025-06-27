@@ -25,7 +25,7 @@ function addMovie(event) {
     
     //Create a new movie object
     const newMovie = {
-        id: movies.length + 1, // Simple ID generation
+        id: movies.length + 1, // Have to redo to get unqiue IDs
         title: title,
         genre: genre,
         rating: rating,
@@ -45,11 +45,13 @@ function renderMovies() {
     document.getElementById('movie').value = '';
     document.getElementById('genre').value = '';
 
-    /*movies.forEach(entry => {
-        alert("Rendering movie: " + entry.title);
-    });*/
-
+    //Create movie cards for each movie in the array
     movies.forEach(entry => {
+        // Check if the movie matches the filter criteria
+        const filter = document.getElementById('filter-genre').value;
+        if (filter !== 'none' && entry.genre !== filter) {
+            return; // Skip movies that don't match the filter
+        }
         
         let card = document.createElement('div');
         if (entry.watched) {
@@ -97,13 +99,13 @@ function renderMovies() {
         
         buttons.addEventListener('click', function(event) { 
             if (event.target.classList.contains('delete-button')) {
-                // Delete movie
+                // Delete movie from the array
                 const index = movies.indexOf(entry);
                 movies.splice(index, 1);
                 renderMovies();
             } else if (event.target.classList.contains('mark-watched-button')) {
                 // Mark movie as watched
-                entry.watched = true;
+                entry.watched = !entry.watched;
                 renderMovies();
             } else if (event.target.classList.contains('edit-button')) {
                 // Edit movie
@@ -114,8 +116,33 @@ function renderMovies() {
 }
 
 function start() {
+    // Add event listener to the add movie form
     var am = document.getElementById('add-movie-form');
     am.addEventListener('submit', addMovie, false);
+
+    // Add event listener to sort by drop down
+    var sb = document.getElementById('sort-by');
+    sb.addEventListener('change' , sortMovies, false);
+
+    // Add event listener to Filter by genre drop down
+    var fbg = document.getElementById('filter-genre');
+    fbg.addEventListener('change', renderMovies, false);
+
+    // Add event listener to 
+
+    renderMovies();
+}
+
+function sortMovies() {
+    const sortBy = document.getElementById('sort-by').value;
+    if (sortBy === 'none') {
+        movies.sort((a, b) => a.id - b.id); // Default sort by ID
+    }
+    else if (sortBy === 'title') {
+        movies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === 'genre') {
+        movies.sort((a, b) => a.genre.localeCompare(b.genre));
+    }
     renderMovies();
 }
 
