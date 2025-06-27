@@ -21,14 +21,14 @@ function addMovie(event) {
     //Get values from input fields
     const title = document.getElementById('movie').value;
     const genre = document.getElementById('genre').value;
-    //const rating = document.getElementById('rating').value;
+    const rating = document.querySelector('input[name="rate"]:checked').value; //Get the selected rating value
     
     //Create a new movie object
     const newMovie = {
         id: movies.length + 1, // Simple ID generation
         title: title,
         genre: genre,
-        rating: 3,
+        rating: rating,
         watched: false
     };
 
@@ -64,7 +64,7 @@ function renderMovies() {
 
         let rating = document.createElement('p');
         rating.className = 'movie-rating';
-        rating.textContent = '★★★★☆'; // Placeholder for rating, can be dynamic later
+        rating.textContent = '★ '.repeat(entry.rating) + ' ☆'.repeat(5 - entry.rating);
 
         let genre = document.createElement('p');
         genre.className = 'movie-genre';

@@ -103,6 +103,9 @@ span {
 	color: gray;
 	padding: 0px 5px;
 	flex-grow: 1;
+	text-align: center;
+	border: 2px solid transparent;
+	user-select: none;
 }
 .rating-star:hover,
 .rating-star:hover ~ .rating-star {
@@ -110,6 +113,22 @@ span {
 	transition: transform 0.1s ease-in-out;
 	color: var(--accent-color);
 	cursor: pointer;
+}
+.rating-star:hover {
+	border: 2px solid green;
+	border-radius: var(--border-radius);
+}
+.rating-star:active {
+	transform: scale(0.95);
+	border: 2px solid green;
+	box-shadow: var(--box-shadow);
+}
+input[type=radio]:checked ~ .rating-star {
+	color: var(--accent-color);
+}
+
+.movie-rating {
+	color: var(--accent-color);
 }
 
 .add-movie-button,
@@ -143,9 +162,11 @@ label {
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
+	flex-basis: 15%;
 }
 
 .movie-card > * {
+	text-align: center;
 	flex-basis: 30px;
 }
 
@@ -159,10 +180,11 @@ label {
 
 .watched {
 	background-color: lightgreen;;
+	color: black;
 }
 
 .movie-card button {
-	padding: 0px;;
+	padding: 0px;
 	width: 30px;
 	height: 30px;
 	box-shadow: inset var(--box-shadow);
@@ -216,6 +238,7 @@ dialog {
 
 .wishlist-container {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1em;
 	width: 80vw;
 }
