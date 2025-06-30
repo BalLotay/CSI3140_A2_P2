@@ -1,22 +1,23 @@
 /* Main styles for page */
 
 :root {
-		--accent-color: #29a7ca;
+	--accent-color: #E50815;
+	--rating-star-color: #FFDF00;
     --text-color: whitesmoke;
-    --background-color: #111;
-    --secondary-background-color: #151515;
-    --input-background-color: #0f1415;
-    --border-color: rgb(168, 220, 240);
+    --background-color: #1F1F1F;
+	--secondary-background-color: #2A2A2A;
+	--input-background-color: #333;
+	--border-color: rgb(105, 104, 104);
     --box-shadow-color: rgba(41, 157, 202, 0.2);
     --box-shadow: 0 8px 16px rgba(41, 157, 202, 0.2);
-		--border-radius: 16px;
+	--border-radius: 16px;
 }
 
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: Arial, sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-family: Helvetica, sans-serif;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -27,7 +28,6 @@ body {
 }
 
 h1 {
-	font-family: Georgia, serif;
 	font-size: 2em;
 	font-weight: 700;
 	color: rgba(255, 68, 0, 0.814);
@@ -63,7 +63,7 @@ input,
 select,
 button,
 .ratings {
-	border: none;
+	border: 0px solid transparent;
 	border-radius: 4px;
 	padding: 0.5em;
 	background-color: var(--input-background-color);
@@ -74,6 +74,7 @@ button,
 input,
 select {
 	width: 100%;
+	border: 1px solid rgb(105, 104, 104);
 }
 
 input[type="radio"] {
@@ -82,7 +83,6 @@ input[type="radio"] {
 select {
 	padding: 0.5em;
 	padding-right: 10px;
-	/* border: 1px solid white; */
 }
 
 
@@ -96,7 +96,6 @@ span {
 	flex-direction: row-reverse;
 	justify-content: space-evenly;
 	align-items: center;
-	/* border: 2px solid red; */
 }
 
 .rating-star {
@@ -111,7 +110,7 @@ span {
 .rating-star:hover ~ .rating-star {
 	transform: scale(1.2);
 	transition: transform 0.1s ease-in-out;
-	color: var(--accent-color);
+	color: var(--rating-star-color);
 	cursor: pointer;
 }
 .rating-star:hover {
@@ -124,18 +123,18 @@ span {
 	box-shadow: var(--box-shadow);
 }
 input[type=radio]:checked ~ .rating-star {
-	color: var(--accent-color);
+	color: var(--rating-star-color);
 }
 
 .movie-rating {
-	color: var(--accent-color);
+	color: var(--rating-star-color);
 }
 
-.add-movie-button,
-.save-changes-button {
-	border: 2px solid var(--accent-color);
-	color: var(--accent-color);
+.add-movie-button {
+	font-weight: bold;
+	background-color: var(--accent-color);
 	cursor: pointer;
+	flex-grow: 1;
 }
 label {
 	text-align: left;
@@ -179,8 +178,12 @@ label {
 }
 
 .watched {
-	background-color: lightgreen;;
-	color: black;
+	background-color: rgb(34, 46, 50);
+	opacity: 0.5;
+}
+.watched .movie-title {
+	text-decoration: line-through;
+	color: var(--text-color);
 }
 
 .movie-card button {
@@ -193,8 +196,6 @@ label {
 
 .movie-card button:hover {
 	transform: scale(1.1);
-	/* background-color: var(--accent-color);
-	color: var(--text-color); */
 }
 .movie-card button:hover:active {
 	transform: scale(0.9);
@@ -204,7 +205,7 @@ label {
 .movie-genre {
 	font-size: 0.8em;
 	border-radius: 80px;
-	background-color: var(--box-shadow-color);
+	background-color: var(--accent-color);
 	padding: 0 5px;
 	display: flex;
 	justify-content: center;
@@ -217,19 +218,22 @@ dialog {
 	margin: auto auto;
 	border: none;
 	color: var(--text-color);
+	min-width: 50vw;
+    box-shadow: 0 0 50px #121212;
 }
  
-::backdrop {
-	background-color: rgba(0, 0, 0, 0.5);
+dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 #edit-movie-form {
 	text-align: left;
-	width: inherit;
 	display: flex;
-	justify-content: start;
-	align-items: center;
+	justify-content: center;
+	align-items: start;
+	flex-direction: column;
 	gap: 10px;
+	width: 50vw;
 }
 
 #sort-filter-container {
@@ -241,4 +245,16 @@ dialog {
 	flex-wrap: wrap;
 	gap: 1em;
 	width: 80vw;
+}
+
+.dialog-button-container {
+	margin-left: auto;
+}
+.save-changes-button {
+	color: black;
+	background-color: #56D364;
+}
+#sort-container label {
+	padding: 0.5em 1em;
+	border: 1px solid var(--border-color);
 }
